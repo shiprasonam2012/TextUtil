@@ -25,3 +25,28 @@ class Operation:
             return inputStr.casefold().replace(str1.casefold(), str2)
         else:
             return "Given string is not present in the text"
+    def swapcaseString(self, inputStr):
+        return inputStr.swapcase()
+    def convertIntoLower(self,inputStr):
+        return inputStr.lower()
+    def encodeString(self, inputStr):
+        return inputStr.encode()
+    def splitString(self, inputStr):
+        return inputStr.split()
+    def removeWhiteSpaceStartEnd(self, inputStr):
+        return list(inputStr.split(" "))
+    def upperCaseString(self, inputStr):
+        return inputStr.upper()
+    def splitStringByLines(self, inputStr):
+        return list(inputStr.splitlines())
+    def checkDiff(self, str1, str2):
+        if (str1 == str2):
+            return "Both strings are equal"
+        elif(str1.casefold() == str2.casefold()):
+            return "Bothe strings are equal but ignored case"
+        else:
+            return "Both strings are not equal"
+    def splitbyword(self, str1, str2):
+        return str1.partition(str2)
+    def findStartIndex(self, str1, str2):
+        return str1.find(str2)

@@ -25,6 +25,10 @@ urlpatterns = [
     path('analyze', views.analyze, name= 'analyze'),
     path('replaceText', views2.index, name = 'index'),
     path('analyze2', views2.analyze, name= 'analyze'),
+    path('textOp2Strings', views.index1, name='index'),
+    path('analyze3', views.textOp2Strings, name= 'analyze')
+
+    # path('textUtil',)
     # path('removePuntuation',views.removepunc, name = 'removepunc'),
     # path('captalizedFirst',views.capfirst, name = 'capfirst'),
     # path('newlineremover',views.newlineremover, name = 'newlineremover'),

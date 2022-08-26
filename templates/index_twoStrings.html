@@ -41,23 +41,27 @@
         </button>
       </div>
       <div class="container">
-        <form action='/analyze2' method='post'> {% csrf_token%}
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Enter you text here</label>
-              <textarea class="form-control" name='text'  id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
+        <form action='/analyze3' method='post'> {% csrf_token%}
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Enter first string</label>
               <textarea class="form-control" name='text1' id="exampleFormControlTextarea1" rows="2"></textarea>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Enter second string</label>
-              <textarea class="form-control" name='text2' id="exampleFormControlTextarea1" rows="2"></textarea>
+              <label for="exampleFormControlTextarea2">Enter second string</label>
+              <textarea class="form-control" name='text2' id="exampleFormControlTextarea2" rows="2"></textarea>
             </div>
           
           <div class="custom-control custom-switch">
-            <input type="checkbox" name="replaceSubstring" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Replace first string from second string</label>
+            <input type="checkbox" name="checkDiff" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1">Check both strings are same</label>
+          </div>
+          <div class="custom-control custom-switch">
+            <input type="checkbox" name="splitbyword" class="custom-control-input" id="customSwitch2">
+            <label class="custom-control-label" for="customSwitch2">Splits strings by a word.</label>
+          </div>
+          <div class="custom-control custom-switch">
+            <input type="checkbox" name="findStartIndex" class="custom-control-input" id="customSwitch3">
+            <label class="custom-control-label" for="customSwitch3">Find Start index of the word</label>
           </div>
 
           <button type="submit" class="btn btn-success">Analyze Text</button>

@@ -33,6 +33,13 @@ def analyze(request):
     spaceremover = request.POST.get('spaceremover', 'off')
     charcount = request.POST.get('charcount', 'off')
     removeNewLines = request.POST.get('removeNewLines', 'off')
+    swapcaseString = request.POST.get('swapcaseString', 'off')
+    convertIntoLower = request.POST.get('convertIntoLower', 'off')
+    encodeString = request.POST.get('encodeString', 'off')
+    splitString = request.POST.get('splitString','off')
+    removeWhiteSpaceStartEnd = request.POST.get('removeWhiteSpaceStartEnd', 'off')
+    upperCaseString = request.POST.get('upperCaseString', 'off')
+    splitStringByLines = request.POST.get('splitStringByLines', 'off')
     obj = textOperation.Operation()
     purpose = ""
     try:
@@ -54,6 +61,35 @@ def analyze(request):
         if removeNewLines == "on":
             purpose+=" and Remove new lines"
             analyzed = obj.removeNewLines(dtext)
+            dtext = analyzed
+        if swapcaseString == "on":
+            purpose+=" and Swap"
+            analyzed = obj.swapcaseString(dtext)
+            dtext = analyzed
+        if convertIntoLower == "on":
+            purpose+=" and convert into lower"
+            analyzed = obj.convertIntoLower(dtext)
+            dtext = analyzed
+        if encodeString == "on":
+            purpose+=" and encoded"
+            analyzed = obj.encodeString(dtext)
+            dtext = analyzed
+        if splitString == "on":
+            purpose+=" and split"
+            analyzed = obj.splitString(dtext)
+            dtext = analyzed
+        if removeWhiteSpaceStartEnd == "on":
+            purpose+=" and remove white space"
+            analyzed = obj.removeWhiteSpaceStartEnd(dtext)
+            dtext = analyzed
+        if upperCaseString == "on":
+            purpose+=" and upper case"
+            analyzed = obj.upperCaseString(dtext)
+            dtext = analyzed
+        if splitStringByLines == "on":
+            purpose+=" and split by line"
+            analyzed = obj.splitStringByLines(dtext)
+            dtext = analyzed
         if count > 0:
             purpose+=" and count charatcters"
             analyzed=analyzed+"\n Also,char count is "+str(count)
@@ -61,11 +97,30 @@ def analyze(request):
         return render(request, 'analyze2.html', params)
     except:
         return HttpResponse('''<Strong>Error</Strong> <br> <a href="/"> Home</a> ''') 
-def removepunc(request):
-    # get the text
-    dText = request.POST.get('text', 'default')
-    # Analyze the text
-    return HttpResponse('''<a href="/"> Home</a> <br>remove puntuation''')
+    
+def index1(request):
+    return render(request, 'index_twoStrings.html')
+def textOp2Strings(request):
+    text1= request.POST.get('text1', 'dafault')
+    text2= request.POST.get('text2', 'dafault')
+    checkDiffButton = request.POST.get('checkDiff', 'off')
+    splitbywordButton = request.POST.get('splitbyword', 'off')
+    findStartIndexButton = request.POST.get('findStartIndex', 'off')
+    obj = textOperation.Operation()
+    purpose= "Operation done on two strings"
+    try:
+        if checkDiffButton == "on":
+            analyzed = obj.checkDiff(text1,text2)
+        if splitbywordButton == "on":
+            analyzed = obj.splitbyword(text1,text2)
+        if findStartIndexButton == "on":
+            analyzed = obj.findStartIndex(text1,text2)
+        params = {'purpose': purpose, 'analyzed_text': analyzed}
+        return render(request, 'analyze2.html', params)
+    except:
+        return HttpResponse('''<Strong>Error</Strong> <br> <a href="/about"> Home</a> ''') 
+            
+    return HttpResponse('''<a href="/"> Home</a> <br>textOp2Strings''')
 
 def capfirst(request):
     return HttpResponse('''<a href="/"> Home </a> <br> Captalized first letter''')
